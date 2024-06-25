@@ -4,7 +4,7 @@ def call() {
             node { label 'workstation' }
         }
 
-        tages {
+        stages {
 
             stage('Compile') {
                 expression { BRANCH_NAME == "main" }
