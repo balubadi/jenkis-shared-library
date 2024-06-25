@@ -1,7 +1,7 @@
 def call() {
     pipeline {
         agent {
-            node { label 'workstation' }
+            node { label 'workstation'}
         }
 
         stages {
@@ -12,6 +12,35 @@ def call() {
                     echo 'Compile'
                 }
             }
+
+            stage('Test Cases') {
+                steps {
+                    echo 'Test Cases'
+                }
+            }
+
+            stage('Integration Test Cases') {
+                steps {
+                    echo 'Test Cases'
+                }
+            }
+
+            stage('Build') {
+                when {
+                    branch 'main'
+                }
+                steps {
+                    echo 'Build'
+                }
+            }
+
+            stage('Release App') {
+                steps {
+                    echo 'Release'
+                }
+            }
+
         }
+
     }
 }
