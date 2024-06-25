@@ -1,46 +1,24 @@
+
 def call() {
     pipeline {
-        agent {
-            node { label 'workstation'}
-        }
+        agent any
 
         stages {
-
-            stage('Compile') {
-                expression { BRANCH_NAME == "main" }
-                steps {
-                    echo 'Compile'
-                }
-            }
-
-            stage('Test Cases') {
-                steps {
-                    echo 'Test Cases'
-                }
-            }
-
-            stage('Integration Test Cases') {
-                steps {
-                    echo 'Test Cases'
-                }
-            }
-
             stage('Build') {
-                when {
-                    branch 'main'
-                }
                 steps {
-                    echo 'Build'
+                    echo 'Building..'
                 }
             }
-
-            stage('Release App') {
+            stage('Test') {
                 steps {
-                    echo 'Release'
+                    echo 'Testing..'
                 }
             }
-
+            stage('Deploy') {
+                steps {
+                    echo 'Deploying....'
+                }
+            }
         }
-
     }
 }
