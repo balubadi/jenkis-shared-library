@@ -1,6 +1,8 @@
 def call() {
     pipeline {
-        agent any
+        agent {
+            node { label 'workstation'}
+        }
 
         stages {
 
