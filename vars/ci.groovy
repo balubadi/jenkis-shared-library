@@ -1,22 +1,15 @@
-
 def call() {
     pipeline {
-        agent any
+        agent {
+            node { label 'workstation' }
+        }
 
-        stages {
-            stage('Build') {
+        tages {
+
+            stage('Compile') {
+                expression { BRANCH_NAME == "main" }
                 steps {
-                    echo 'Building..'
-                }
-            }
-            stage('Test') {
-                steps {
-                    echo 'Testing..'
-                }
-            }
-            stage('Deploy') {
-                steps {
-                    echo 'Deploying....'
+                    echo 'Compile'
                 }
             }
         }
