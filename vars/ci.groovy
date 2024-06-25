@@ -1,46 +1,25 @@
-def call() {
-    pipeline {
-        agent {
-            node { label 'workstation'}
+pipeline {
+    agent any
+    stages {
+        stage('Stage 1') {
+            steps {
+                echo 'Hello world 1!'
+            }
         }
-
-        stages {
-
-            stage('Compile') {
-                expression { BRANCH_NAME == "main" }
-                steps {
-                    echo 'Compile'
-                }
+        stage('Stage 2') {
+            steps {
+                echo 'Hello world 2!'
             }
-
-            stage('Test Cases') {
-                steps {
-                    echo 'Test Cases'
-                }
-            }
-
-            stage('Integration Test Cases') {
-                steps {
-                    echo 'Test Cases'
-                }
-            }
-
-            stage('Build') {
-                when {
-                    branch 'main'
-                }
-                steps {
-                    echo 'Build'
-                }
-            }
-
-            stage('Release App') {
-                steps {
-                    echo 'Release'
-                }
-            }
-
         }
-
+        stage('Stage 3') {
+            steps {
+                echo 'Hello world 3!'
+            }
+        }
+        stage('Stage 4') {
+            steps {
+                echo 'Hello world 4!'
+            }
+        }
     }
 }
